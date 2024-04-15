@@ -43,10 +43,11 @@ if __name__ == "__main__":
     #resolution - sensor.res=[9|10|11|12]
     while True:
         for j in range(20):#NTP per 10mins
-            try:
-                ntptime.settime()    #
-            except ETIMEOUT:
-                ntptime.host='ntp4.tencent.com'
+            if j ==20:
+                try:
+                    ntptime.settime()    #
+                except ETIMEOUT:
+                    ntptime.host='ntp4.tencent.com'
             rtc=RTC()
             list_time = time.localtime()    #
             #cal_year = list_time[0]    #
